@@ -21,7 +21,7 @@
 @endpush
 
 @section('content')
-    @include('admin.layouts.page-header', ['title' => 'Product Tag Create'])
+    @include('admin.layouts.page-header', ['title' => 'Product Tag Update'])
     <div class="row">
         <div class="col-md-12">
             <!-- Form Elements -->
@@ -29,15 +29,15 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <form method="POST" action="{{ route('product-tag.store') }}">
+                            <form method="POST" action="{{ route('product-tag.update', ['product_tag' => $single_tag->uid ]) }}">
                                 @csrf
+                                @method('PATCH')
+                                <input type="hidden" name="id" value="{{ $single_tag->uid }}">
                                 <div class="form-group">
-                                    <label>Tag Name</label>
-                                    <input class="form-control" name="tag-name" />
+                                    <label>tag Name</label>
+                                    <input class="form-control" name="tag-name" value="{{ $single_tag->tag_name }}" />
                                 </div>
-
-                                <button type="submit" class="btn btn-default">Submit</button>
-                                <button type="reset" class="btn btn-primary">Reset</button>
+                                <button type="submit" class="btn btn-default">update</button>
                             </form>
                         </div>
 

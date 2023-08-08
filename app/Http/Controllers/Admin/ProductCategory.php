@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductCategory extends Controller
 {
@@ -12,7 +14,7 @@ class ProductCategory extends Controller
      */
     public function index()
     {
-        return view('admin.product-category');
+        return redirect()->route('product-category.create');
     }
 
     /**
@@ -20,7 +22,7 @@ class ProductCategory extends Controller
      */
     public function create()
     {
-        return view('admin.product-category-create');
+        return view('admin.product-category-create')->with('category', Category::active()->get());
     }
 
     /**
@@ -28,7 +30,13 @@ class ProductCategory extends Controller
      */
     public function store(Request $request)
     {
-        echo "Asfas";
+        $category_name = $request->post('category-name');
+        Category::create([
+            'category_name' => $category_name,
+            'category_slug' => Str::slug($category_name),
+            'status' => 1,
+        ]);
+        return redirect()->route('product-category.create');
     }
 
     /**
@@ -36,7 +44,7 @@ class ProductCategory extends Controller
      */
     public function show(string $id)
     {
-
+        return redirect()->route('product-category.create');
     }
 
     /**
@@ -44,7 +52,7 @@ class ProductCategory extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.product-category-edit')->with('category', Category::active()->get())->with('single_category', Category::findByUid($id));
     }
 
     /**
@@ -52,7 +60,13 @@ class ProductCategory extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $category_name = $request->post('category-name');
+        Category::whereUid($id)->update([
+            'category_name' => $category_name,
+            'category_slug' => Str::slug($category_name),
+            'status' => 1,
+        ]);
+        return redirect()->route('product-category.edit', ['product_category' => $id]);
     }
 
     /**
@@ -60,6 +74,9 @@ class ProductCategory extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        $category = Category::findByUid($id);
+        $category->delete();
+        return redirect()->route('product-category.create');
     }
 }

@@ -27,15 +27,15 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <form method="POST" action="<?php echo e(route('product-category.store')); ?>">
+                            <form method="POST" action="<?php echo e(route('product-category.update', ['product_category' => $single_category->uid ])); ?>">
                                 <?php echo csrf_field(); ?>
+                                <?php echo method_field('PATCH'); ?>
+                                <input type="hidden" name="id" value="<?php echo e($single_category->uid); ?>">
                                 <div class="form-group">
                                     <label>Category Name</label>
-                                    <input class="form-control" name="category-name" />
+                                    <input class="form-control" name="category-name" value="<?php echo e($single_category->category_name); ?>" />
                                 </div>
-
-                                <button type="submit" class="btn btn-default">Submit</button>
-                                <button type="reset" class="btn btn-primary">Reset</button>
+                                <button type="submit" class="btn btn-default">update</button>
                             </form>
                         </div>
 
@@ -94,4 +94,4 @@
     </script>
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\lenovo\Desktop\Amit Kumar\Laravel\handmadeinindia\resources\views/admin/product-category-create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\lenovo\Desktop\Amit Kumar\Laravel\handmadeinindia\resources\views/admin/product-category-edit.blade.php ENDPATH**/ ?>
