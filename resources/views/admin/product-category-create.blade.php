@@ -3,6 +3,21 @@
 @push('style')
     <!-- TABLE STYLES-->
     <link href="{{ asset('admin/assets/js/dataTables/dataTables.bootstrap.css') }}" rel="stylesheet" />
+
+    <style>
+        .category-action {
+            display: flex;
+        }
+        .category-action span {
+            margin: 0 13px;
+        }
+        .category-action i {
+            cursor: pointer;
+        }
+        .category-action form {
+            margin: 0 13px;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -21,9 +36,8 @@
                                     <input class="form-control" name="category-name" />
                                 </div>
 
-                                <button type="submit" class="btn btn-default">Submit Button</button>
-                                <button type="reset" class="btn btn-primary">Reset Button</button>
-
+                                <button type="submit" class="btn btn-default">Submit</button>
+                                <button type="reset" class="btn btn-primary">Reset</button>
                             </form>
                         </div>
 
@@ -41,20 +55,20 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td style="width: 80%">Trident</td>
-                                                    <td>
-                                                        <span><i class="fa fa-pencil text-primary" aria-hidden="true"></i></span>
-                                                        <span><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="width: 80%">Trident</td>
-                                                    <td>
-                                                        <span><i class="fa fa-pencil text-primary" aria-hidden="true"></i></span>
-                                                        <span><i class="fa fa-trash-o text-danger" aria-hidden="true"></i></span>
-                                                    </td>
-                                                </tr>
+                                                @foreach ($category as $item)
+                                                    <tr>
+                                                        <td style="width: 80%">{{ $item->category_name }}</td>
+                                                        <td class="category-action">
+                                                            <a href="{{ route('product-category.edit', ['product_category' => $item->uid]) }}"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
+                                                            <form action="{{ route('product-category.destroy', ['product_category' => $item->uid ]) }}" method="post" id="delete-category">
+                                                                @method('delete')
+                                                                <input type="hidden" name="uid" value="{{ $item->uid }}">
+                                                                <i class="fa fa-trash-o text-danger" onclick="document.getElementById('delete-category').submit();" aria-hidden="true"></i>
+                                                            </form>
+                                                            <a href="{{ route('product-category.destroy', ['product_category' => $item->uid ]) }}"></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>

@@ -23,9 +23,6 @@
                             <li>
                                 <a class="<?php echo e(activeMenu('admin/product-category/create', 'active-menu')); ?>" href="<?php echo e(route('product-category.create')); ?>">Adding</a>
                             </li>
-                            <li>
-                                <a class="<?php echo e(activeMenu('admin/product-category', 'active-menu')); ?>" href="<?php echo e(route('product-category.index')); ?>">View</a>
-                            </li>
                         </ul>
                     </li>
                     <li class="<?php echo e(activeMenu('admin/product-tag*')); ?>">
@@ -33,9 +30,6 @@
                         <ul class="nav nav-third-level">
                             <li>
                                 <a class="<?php echo e(activeMenu('admin/product-tag/create', 'active-menu')); ?>" href="<?php echo e(route('product-tag.create')); ?>">Adding</a>
-                            </li>
-                            <li>
-                                <a class="<?php echo e(activeMenu('admin/product-tag', 'active-menu')); ?>" href="<?php echo e(route('product-tag.index')); ?>">View</a>
                             </li>
                         </ul>
                     </li>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductTag extends Controller
 {
@@ -12,7 +14,7 @@ class ProductTag extends Controller
      */
     public function index()
     {
-        return view('admin.product-tag');
+        return redirect()->route('product-tag.create');
     }
 
     /**
@@ -20,7 +22,7 @@ class ProductTag extends Controller
      */
     public function create()
     {
-        return view('admin.product-tag-create');
+        return view('admin.product-tag-create')->with('tag', Tag::active()->get());
     }
 
     /**
@@ -28,7 +30,13 @@ class ProductTag extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag_name = $request->post('tag-name');
+        Tag::create([
+            'tag_name' => $tag_name,
+            'tag_slug' => Str::slug($tag_name),
+            'status' => 1,
+        ]);
+        return redirect()->route('product-tag.create');
     }
 
     /**
@@ -36,7 +44,7 @@ class ProductTag extends Controller
      */
     public function show(string $id)
     {
-        //
+        return redirect()->route('product-tag.create');
     }
 
     /**
@@ -44,7 +52,7 @@ class ProductTag extends Controller
      */
     public function edit(string $id)
     {
-        //
+        return view('admin.product-tag-edit')->with('tag', Tag::active()->get())->with('single_tag', Tag::findByUid($id));
     }
 
     /**
@@ -52,7 +60,13 @@ class ProductTag extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $tag_name = $request->post('tag-name');
+        Tag::whereUid($id)->update([
+            'tag_name' => $tag_name,
+            'tag_slug' => Str::slug($tag_name),
+            'status' => 1,
+        ]);
+        return redirect()->route('product-tag.edit', ['product_tag' => $id]);
     }
 
     /**
@@ -60,6 +74,8 @@ class ProductTag extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $tag = Tag::findByUid($id);
+        $tag->delete();
+        return redirect()->route('product-tag.create');
     }
 }

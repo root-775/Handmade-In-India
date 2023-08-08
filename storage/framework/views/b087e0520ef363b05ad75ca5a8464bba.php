@@ -3,23 +3,23 @@
     <link href="<?php echo e(asset('admin/assets/js/dataTables/dataTables.bootstrap.css')); ?>" rel="stylesheet" />
 
     <style>
-        .category-action {
+        .tag-action {
             display: flex;
         }
-        .category-action span {
+        .tag-action span {
             margin: 0 13px;
         }
-        .category-action i {
+        .tag-action i {
             cursor: pointer;
         }
-        .category-action form {
+        .tag-action form {
             margin: 0 13px;
         }
     </style>
 <?php $__env->stopPush(); ?>
 
 <?php $__env->startSection('content'); ?>
-    <?php echo $__env->make('admin.layouts.page-header', ['title' => 'Product Category Create'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+    <?php echo $__env->make('admin.layouts.page-header', ['title' => 'Product Tag Update'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="row">
         <div class="col-md-12">
             <!-- Form Elements -->
@@ -27,15 +27,15 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <form method="POST" action="<?php echo e(route('product-category.store')); ?>">
+                            <form method="POST" action="<?php echo e(route('product-tag.update', ['product_tag' => $single_tag->uid ])); ?>">
                                 <?php echo csrf_field(); ?>
+                                <?php echo method_field('PATCH'); ?>
+                                <input type="hidden" name="id" value="<?php echo e($single_tag->uid); ?>">
                                 <div class="form-group">
-                                    <label>Category Name</label>
-                                    <input class="form-control" name="category-name" />
+                                    <label>tag Name</label>
+                                    <input class="form-control" name="tag-name" value="<?php echo e($single_tag->tag_name); ?>" />
                                 </div>
-
-                                <button type="submit" class="btn btn-default">Submit</button>
-                                <button type="reset" class="btn btn-primary">Reset</button>
+                                <button type="submit" class="btn btn-default">update</button>
                             </form>
                         </div>
 
@@ -53,17 +53,17 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php $__currentLoopData = $tag; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <tr>
-                                                        <td style="width: 80%"><?php echo e($item->category_name); ?></td>
-                                                        <td class="category-action">
-                                                            <a href="<?php echo e(route('product-category.edit', ['product_category' => $item->uid])); ?>"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
-                                                            <form action="<?php echo e(route('product-category.destroy', ['product_category' => $item->uid ])); ?>" method="post" id="delete-category">
+                                                        <td style="width: 80%"><?php echo e($item->tag_name); ?></td>
+                                                        <td class="tag-action">
+                                                            <a href="<?php echo e(route('product-tag.edit', ['product_tag' => $item->uid])); ?>"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
+                                                            <form action="<?php echo e(route('product-tag.destroy', ['product_tag' => $item->uid ])); ?>" method="post" id="delete-tag">
                                                                 <?php echo method_field('delete'); ?>
                                                                 <input type="hidden" name="uid" value="<?php echo e($item->uid); ?>">
-                                                                <i class="fa fa-trash-o text-danger" onclick="document.getElementById('delete-category').submit();" aria-hidden="true"></i>
+                                                                <i class="fa fa-trash-o text-danger" onclick="document.getElementById('delete-tag').submit();" aria-hidden="true"></i>
                                                             </form>
-                                                            <a href="<?php echo e(route('product-category.destroy', ['product_category' => $item->uid ])); ?>"></a>
+                                                            <a href="<?php echo e(route('product-tag.destroy', ['product_tag' => $item->uid ])); ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -94,4 +94,4 @@
     </script>
 <?php $__env->stopPush(); ?>
 
-<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\lenovo\Desktop\Amit Kumar\Laravel\handmadeinindia\resources\views/admin/product-category-create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\lenovo\Desktop\Amit Kumar\Laravel\handmadeinindia\resources\views/admin/product-tag-edit.blade.php ENDPATH**/ ?>
