@@ -29,7 +29,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <form method="POST" action="{{ route('product-category.update', ['product_category' => $single_category->uid ]) }}">
+                            <form method="POST" action="{{ route('admin.product-category.update', ['product_category' => $single_category->uid ]) }}">
                                 @csrf
                                 @method('PATCH')
                                 <input type="hidden" name="id" value="{{ $single_category->uid }}">
@@ -59,13 +59,12 @@
                                                     <tr>
                                                         <td style="width: 80%">{{ $item->category_name }}</td>
                                                         <td class="category-action">
-                                                            <a href="{{ route('product-category.edit', ['product_category' => $item->uid]) }}"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
-                                                            <form action="{{ route('product-category.destroy', ['product_category' => $item->uid ]) }}" method="post" id="delete-category">
+                                                            <a href="{{ route('admin.product-category.edit', ['product_category' => $item->uid]) }}"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
+                                                            <form action="{{ route('admin.product-category.destroy', ['product_category' => $item->uid ]) }}" method="post" id="delete-category">
                                                                 @method('delete')
                                                                 <input type="hidden" name="uid" value="{{ $item->uid }}">
                                                                 <i class="fa fa-trash-o text-danger" onclick="document.getElementById('delete-category').submit();" aria-hidden="true"></i>
                                                             </form>
-                                                            <a href="{{ route('product-category.destroy', ['product_category' => $item->uid ]) }}"></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

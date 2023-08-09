@@ -13,13 +13,23 @@ class Product extends BaseModel
         'product_name',
         'product_slug',
         'product_brand',
-        'product_image_path',
-        'product_description',
+        'product_price',
+        'product_image',
+        'product_flip_image',
+        'product_desc_images',
+        'product_discount_percentage',
+        'product_sku',
+        'product_short_description',
+        'product_long_description',
         'status',
     ];
 
 
     public function categories() {
-        return $this->belongsToMany(Category::class);
+        return $this->belongsToMany(Category::class, 'product_category', 'product_id','category_id');
+    }
+
+    public function tags(){
+        return $this->belongsToMany(Tag::class, 'product_tag');
     }
 }

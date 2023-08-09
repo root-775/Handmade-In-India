@@ -40,8 +40,7 @@
     <!-- METISMENU SCRIPTS -->
     <script src="<?php echo e(asset('admin/assets/js/jquery.metisMenu.js')); ?>"></script>
     <!-- MORRIS CHART SCRIPTS -->
-    <script src="<?php echo e(asset('admin/assets/js/morris/raphael-2.1.0.min.js')); ?>"></script>
-    <script src="<?php echo e(asset('admin/assets/js/morris/morris.js')); ?>"></script>
+    
     <!-- CUSTOM SCRIPTS -->
     <?php echo $__env->yieldPushContent('script'); ?>
     <script src="<?php echo e(asset('admin/assets/js/custom.js')); ?>"></script>

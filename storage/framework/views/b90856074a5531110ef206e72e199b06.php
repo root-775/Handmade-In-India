@@ -12,16 +12,16 @@
                 <a href="#" ><i class="fa fa-shopping-cart fa-3x"></i> Product <span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level">
                     <li >
-                        <a class="<?php echo e(activeMenu('admin/product/create', 'active-menu')); ?>" href="<?php echo e(route('product.create')); ?>">Adding</a>
+                        <a class="<?php echo e(activeMenu('admin/product/create', 'active-menu')); ?>" href="<?php echo e(route('admin.product.create')); ?>">Adding</a>
                     </li>
                     <li>
-                        <a class="<?php echo e(activeMenu('admin/product', 'active-menu')); ?>" href="<?php echo e(route('product.index')); ?>">View</a>
+                        <a class="<?php echo e(activeMenu('admin/product', 'active-menu')); ?>" href="<?php echo e(route('admin.product.index')); ?>">View</a>
                     </li>
                     <li class="<?php echo e(activeMenu('admin/product-category*')); ?>">
                         <a href="#">Category<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
-                                <a class="<?php echo e(activeMenu('admin/product-category/create', 'active-menu')); ?>" href="<?php echo e(route('product-category.create')); ?>">Adding</a>
+                                <a class="<?php echo e(activeMenu('admin/product-category/create', 'active-menu')); ?>" href="<?php echo e(route('admin.product-category.create')); ?>">Adding</a>
                             </li>
                         </ul>
                     </li>
@@ -29,7 +29,7 @@
                         <a href="#">Tags<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             <li>
-                                <a class="<?php echo e(activeMenu('admin/product-tag/create', 'active-menu')); ?>" href="<?php echo e(route('product-tag.create')); ?>">Adding</a>
+                                <a class="<?php echo e(activeMenu('admin/product-tag/create', 'active-menu')); ?>" href="<?php echo e(route('admin.product-tag.create')); ?>">Adding</a>
                             </li>
                         </ul>
                     </li>

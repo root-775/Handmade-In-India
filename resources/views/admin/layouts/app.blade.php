@@ -40,8 +40,8 @@
     <!-- METISMENU SCRIPTS -->
     <script src="{{ asset('admin/assets/js/jquery.metisMenu.js') }}"></script>
     <!-- MORRIS CHART SCRIPTS -->
-    <script src="{{ asset('admin/assets/js/morris/raphael-2.1.0.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/morris/morris.js') }}"></script>
+    {{-- <script src="{{ asset('admin/assets/js/morris/raphael-2.1.0.min.js') }}"></script>
+    <script src="{{ asset('admin/assets/js/morris/morris.js') }}"></script> --}}
     <!-- CUSTOM SCRIPTS -->
     @stack('script')
     <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
