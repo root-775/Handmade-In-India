@@ -27,7 +27,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <form method="POST" action="<?php echo e(route('product-category.update', ['product_category' => $single_category->uid ])); ?>">
+                            <form method="POST" action="<?php echo e(route('admin.product-category.update', ['product_category' => $single_category->uid ])); ?>">
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('PATCH'); ?>
                                 <input type="hidden" name="id" value="<?php echo e($single_category->uid); ?>">
@@ -57,13 +57,12 @@
                                                     <tr>
                                                         <td style="width: 80%"><?php echo e($item->category_name); ?></td>
                                                         <td class="category-action">
-                                                            <a href="<?php echo e(route('product-category.edit', ['product_category' => $item->uid])); ?>"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
-                                                            <form action="<?php echo e(route('product-category.destroy', ['product_category' => $item->uid ])); ?>" method="post" id="delete-category">
+                                                            <a href="<?php echo e(route('admin.product-category.edit', ['product_category' => $item->uid])); ?>"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
+                                                            <form action="<?php echo e(route('admin.product-category.destroy', ['product_category' => $item->uid ])); ?>" method="post" id="delete-category">
                                                                 <?php echo method_field('delete'); ?>
                                                                 <input type="hidden" name="uid" value="<?php echo e($item->uid); ?>">
                                                                 <i class="fa fa-trash-o text-danger" onclick="document.getElementById('delete-category').submit();" aria-hidden="true"></i>
                                                             </form>
-                                                            <a href="<?php echo e(route('product-category.destroy', ['product_category' => $item->uid ])); ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

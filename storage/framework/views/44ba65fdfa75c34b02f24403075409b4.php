@@ -27,7 +27,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <form method="POST" action="<?php echo e(route('product-category.store')); ?>">
+                            <form method="POST" action="<?php echo e(route('admin.product-category.store')); ?>">
                                 <?php echo csrf_field(); ?>
                                 <div class="form-group">
                                     <label>Category Name</label>
@@ -45,7 +45,7 @@
                                 <div class="panel-body">
                                     <div class="table-responsive">
                                         <table class="table table-striped table-bordered table-hover"
-                                            id="dataTables-example">
+                                            id="category-dataTable">
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
@@ -57,13 +57,13 @@
                                                     <tr>
                                                         <td style="width: 80%"><?php echo e($item->category_name); ?></td>
                                                         <td class="category-action">
-                                                            <a href="<?php echo e(route('product-category.edit', ['product_category' => $item->uid])); ?>"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
-                                                            <form action="<?php echo e(route('product-category.destroy', ['product_category' => $item->uid ])); ?>" method="post" id="delete-category">
+                                                            <a href="<?php echo e(route('admin.product-category.edit', ['product_category' => $item->uid])); ?>"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
+                                                            <form action="<?php echo e(route('admin.product-category.destroy', ['product_category' => $item->uid ])); ?>" method="post" id="delete-category">
                                                                 <?php echo method_field('delete'); ?>
                                                                 <input type="hidden" name="uid" value="<?php echo e($item->uid); ?>">
                                                                 <i class="fa fa-trash-o text-danger" onclick="document.getElementById('delete-category').submit();" aria-hidden="true"></i>
                                                             </form>
-                                                            <a href="<?php echo e(route('product-category.destroy', ['product_category' => $item->uid ])); ?>"></a>
+                                                            <a href="<?php echo e(route('admin.product-category.destroy', ['product_category' => $item->uid ])); ?>"></a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -89,7 +89,7 @@
     <script src="<?php echo e(asset('admin/assets/js/dataTables/dataTables.bootstrap.js')); ?>"></script>
     <script>
         $(document).ready(function() {
-            $('#dataTables-example').dataTable();
+            $('#category-dataTable').dataTable();
         });
     </script>
 <?php $__env->stopPush(); ?>
