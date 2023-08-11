@@ -1,3 +1,8 @@
+<?php $__env->startPush('style'); ?>
+<!-- MORRIS CHART STYLES-->
+<link href="<?php echo e(asset('admin/assets/js/morris/morris-0.4.3.min.css')); ?>" rel="stylesheet" />
+<?php $__env->stopPush(); ?>
+
 <?php $__env->startSection('content'); ?>
     <?php echo $__env->make('admin.layouts.page-header', ['title' => 'Admin Dashboard'], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div class="row">
@@ -423,5 +428,11 @@
     </div>
     <!-- /. ROW  -->
 <?php $__env->stopSection(); ?>
+<?php $__env->startPush('script'); ?>
+<!-- MORRIS CHART SCRIPTS -->
+<script src="<?php echo e(asset('admin/assets/js/morris/raphael-2.1.0.min.js')); ?>"></script>
+<script src="<?php echo e(asset('admin/assets/js/morris/morris.js')); ?>"></script>
+<!-- CUSTOM SCRIPTS -->
+<?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('admin.layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\lenovo\Desktop\Amit Kumar\Laravel\handmadeinindia\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>

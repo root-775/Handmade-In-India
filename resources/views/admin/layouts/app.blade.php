@@ -9,8 +9,6 @@
     <link href="{{ asset('admin/assets/css/bootstrap.css') }}" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="{{ asset('admin/assets/css/font-awesome.css') }}" rel="stylesheet" />
-    <!-- MORRIS CHART STYLES-->
-    <link href="{{ asset('admin/assets/js/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
     <!-- CUSTOM STYLES-->
     <link href="{{ asset('admin/assets/css/custom.css') }}" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
@@ -39,10 +37,7 @@
     <script src="{{ asset('admin/assets/js/bootstrap.min.js') }}"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="{{ asset('admin/assets/js/jquery.metisMenu.js') }}"></script>
-    <!-- MORRIS CHART SCRIPTS -->
-    {{-- <script src="{{ asset('admin/assets/js/morris/raphael-2.1.0.min.js') }}"></script>
-    <script src="{{ asset('admin/assets/js/morris/morris.js') }}"></script> --}}
-    <!-- CUSTOM SCRIPTS -->
+    
     @stack('script')
     <script src="{{ asset('admin/assets/js/custom.js') }}"></script>
 

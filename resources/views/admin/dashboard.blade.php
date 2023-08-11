@@ -1,5 +1,10 @@
 @extends('admin.layouts.app')
 
+@push('style')
+<!-- MORRIS CHART STYLES-->
+<link href="{{ asset('admin/assets/js/morris/morris-0.4.3.min.css') }}" rel="stylesheet" />
+@endpush
+
 @section('content')
     @include('admin.layouts.page-header', ['title' => 'Admin Dashboard'])
     <div class="row">
@@ -425,3 +430,9 @@
     </div>
     <!-- /. ROW  -->
 @endsection
+@push('script')
+<!-- MORRIS CHART SCRIPTS -->
+<script src="{{ asset('admin/assets/js/morris/raphael-2.1.0.min.js') }}"></script>
+<script src="{{ asset('admin/assets/js/morris/morris.js') }}"></script>
+<!-- CUSTOM SCRIPTS -->
+@endpush

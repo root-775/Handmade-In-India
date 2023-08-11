@@ -9,8 +9,6 @@
     <link href="<?php echo e(asset('admin/assets/css/bootstrap.css')); ?>" rel="stylesheet" />
     <!-- FONTAWESOME STYLES-->
     <link href="<?php echo e(asset('admin/assets/css/font-awesome.css')); ?>" rel="stylesheet" />
-    <!-- MORRIS CHART STYLES-->
-    <link href="<?php echo e(asset('admin/assets/js/morris/morris-0.4.3.min.css')); ?>" rel="stylesheet" />
     <!-- CUSTOM STYLES-->
     <link href="<?php echo e(asset('admin/assets/css/custom.css')); ?>" rel="stylesheet" />
     <!-- GOOGLE FONTS-->
@@ -39,9 +37,7 @@
     <script src="<?php echo e(asset('admin/assets/js/bootstrap.min.js')); ?>"></script>
     <!-- METISMENU SCRIPTS -->
     <script src="<?php echo e(asset('admin/assets/js/jquery.metisMenu.js')); ?>"></script>
-    <!-- MORRIS CHART SCRIPTS -->
     
-    <!-- CUSTOM SCRIPTS -->
     <?php echo $__env->yieldPushContent('script'); ?>
     <script src="<?php echo e(asset('admin/assets/js/custom.js')); ?>"></script>
 

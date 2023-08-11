@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('tags')->with('categories')->active()->orderBy('id', 'desc')->get();
+        $products = Product::with('tags')->with('categories')->orderBy('id', 'desc')->get();
         return view('admin.product', compact('products'));
     }
 
