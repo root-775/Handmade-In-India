@@ -13953,3 +13953,15 @@ Did you mean this?
 #55 C:\\Users\\lenovo\\Desktop\\Amit Kumar\\Laravel\\handmadeinindia\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\resources\\server.php(16): require_once('C:\\\\Users\\\\lenovo...')
 #56 {main}
 "} 
+[2023-08-11 05:00:34] local.ERROR: Uncaught ReflectionException: Class "Illuminate\route\Middleware\AuthenticateSession" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Illuminate\\rout...', 'handle')
+#1 {main}
+  thrown {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Uncaught ReflectionException: Class \"Illuminate\\route\\Middleware\\AuthenticateSession\" does not exist in Command line code:1
+Stack trace:
+#0 Command line code(1): ReflectionMethod->__construct('Illuminate\\\\rout...', 'handle')
+#1 {main}
+  thrown at Command line code:1)
+[stacktrace]
+#0 {main}
+"} 
