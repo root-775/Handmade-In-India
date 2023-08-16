@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Product Long Description</label>
-                                    <textarea  class="form-control tinymceTextarea" name="product-short-description" cols="30" rows="10"></textarea>
+                                    <textarea  class="form-control tinymceTextarea" name="product-long-description" cols="30" rows="10"></textarea>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-sm-4">
