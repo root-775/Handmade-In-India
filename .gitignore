@@ -18,5 +18,5 @@ yarn-error.log
 /.idea
 /.vscode
 database/database.sqlite
-storage/framework
-storage/logs
+storage/framework/*
+storage/logs/*
