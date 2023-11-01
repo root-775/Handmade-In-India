@@ -14,7 +14,7 @@ class ProductTagController extends Controller
      */
     public function index()
     {
-        return redirect()->route('product-tag.create');
+        return redirect()->route('admin.product-tag.create');
     }
 
     /**
@@ -36,7 +36,7 @@ class ProductTagController extends Controller
             'tag_slug' => Str::slug($tag_name),
             'status' => 1,
         ]);
-        return redirect()->route('product-tag.create');
+        return redirect()->route('admin.product-tag.create');
     }
 
     /**
@@ -44,7 +44,7 @@ class ProductTagController extends Controller
      */
     public function show(string $id)
     {
-        return redirect()->route('product-tag.create');
+        return redirect()->route('admin.product-tag.create');
     }
 
     /**
@@ -66,7 +66,7 @@ class ProductTagController extends Controller
             'tag_slug' => Str::slug($tag_name),
             'status' => 1,
         ]);
-        return redirect()->route('product-tag.edit', ['product_tag' => $id]);
+        return redirect()->route('admin.product-tag.edit', ['product_tag' => $id]);
     }
 
     /**
@@ -76,6 +76,6 @@ class ProductTagController extends Controller
     {
         $tag = Tag::findByUid($id);
         $tag->delete();
-        return redirect()->route('product-tag.create');
+        return redirect()->route('admin.product-tag.create');
     }
 }

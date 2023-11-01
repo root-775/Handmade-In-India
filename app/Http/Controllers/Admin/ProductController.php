@@ -100,7 +100,10 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $product = Product::findByUidOrFail($id);
+        $categories = Category::active()->get();
+        $tags = Tag::active()->get();
+        return view('admin.product-edit', compact("product", "categories", "tags"));
     }
 
     /**
@@ -108,7 +111,56 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $pro_name = $request->post('product-name');
+        $product = Product::updateOrCreate(
+            ['id' => decodeId($id)],
+            ['product_name' => $pro_name,
+            'product_slug' => Str::slug($pro_name),
+            'product_brand' => $request->post('product-brand'),
+            'product_price' => $request->post('product-price'),
+            'product_discount_percentage' => $request->post('product-discount-percentage'),
+            'product_sku' => $request->post('product-sku'),
+            'product_short_description' => $request->post('product-short-description'),
+            'product_long_description' => $request->post('product-long-description') ,
+            'status' => 1,
+        ]);
+
+        if ($request->hasFile('product-image')) {
+            $image = time().'-'.$request->file('product-image')->getClientOriginalName();
+            $request->file('product-image')->move(public_path().'/image/products', $image);
+            $product->product_image = $image;
+            $product->save();
+        }
+        if ($request->hasFile('product-flip-image')) {
+            $image = time().'-'.$request->file('product-flip-image')->getClientOriginalName();
+            $request->file('product-flip-image')->move(public_path().'/image/products', $image);
+            $product->product_flip_image = $image;
+            $product->save();
+        }
+
+        if ($request->hasFile('product-desc-images')) {
+            $desc_images = array();
+            foreach ($request->file('product-desc-images') as $key => $file) {
+                $image = time().'-'.$file->getClientOriginalName();
+                $file->move(public_path().'/image/products', $image);
+                $desc_images[] = $image;
+            }
+            $product->product_desc_images = json_encode($desc_images);
+            $product->save();
+        }
+
+
+        $tag_ids = array();
+        foreach ($request->input('tag-id') as $key => $value) {
+            $tag_ids[] = decodeId($value);
+        }
+        $category_ids = array();
+        foreach ($request->input('category-id') as $key => $value) {
+            $category_ids[] = decodeId($value);
+        }
+        $product->tags()->sync((array)$tag_ids);
+        $product->categories()->sync((array)$category_ids);
+        return redirect()->route('admin.product.index');
     }
 
     /**

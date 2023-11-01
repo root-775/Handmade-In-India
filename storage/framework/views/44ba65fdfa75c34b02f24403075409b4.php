@@ -5,15 +5,11 @@
     <style>
         .category-action {
             display: flex;
-        }
-        .category-action span {
-            margin: 0 13px;
+            justify-content: center;
+            gap: 15px;
         }
         .category-action i {
             cursor: pointer;
-        }
-        .category-action form {
-            margin: 0 13px;
         }
     </style>
 <?php $__env->stopPush(); ?>

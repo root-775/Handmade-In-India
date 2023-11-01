@@ -45,6 +45,7 @@
                                             id="product-dataTable">
                                             <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Brand</th>
                                                     <th>Price</th>
@@ -66,6 +67,7 @@
                                             <tbody>
                                                 @foreach ($products as $item)
                                                     <tr>
+                                                        <td>{{ $item->id }}</td>
                                                         <td>{{ $item->product_name }}</td>
                                                         <td>{{ $item->product_brand }}</td>
                                                         <td>{{ $item->product_price }}</td>

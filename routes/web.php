@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () { return view('home.home'); })->name('home');
-Route::get('/shop', function () { return view('home.shop'); })->name('shop');
+Route::get('/shop', [ProductController::class, 'index'] )->name('shop');
 Route::get('/product/{slug}', function () { return view('home.product-detail'); })->name('product.detail');
 Route::get('/blog', function () { return view('home.blog'); })->name('blog');
 Route::get('/blog/{slug}', function () { return view('home.single-blog'); })->name('single.blog')->where('slug', '[A-Za-z0-9-_]+');

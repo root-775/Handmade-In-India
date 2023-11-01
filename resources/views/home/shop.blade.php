@@ -88,40 +88,33 @@
 
                     <div class="col-lg-9 col-12 learts-mb-50 order-lg-2">
                         <!-- Products Start -->
-                        <div id="shop-products"
-                            class="products isotope-grid row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
+                        <div id="shop-products" class="products isotope-grid row row-cols-xl-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
 
                             <div class="grid-sizer col-1"></div>
-
-                            <div class="grid-item col featured">
-                                <div class="product">
-                                    <div class="product-thumb">
-                                        <a href="{{ route('product.detail', ['slug'=> 'product-details']) }}" class="image">
-                                            <img src="{{ asset('assets/images/product/s328/product-17.webp') }}" alt="Product Image">
-                                            <img class="image-hover "
-                                                src="{{ asset('assets/images/product/s328/product-17-hover.webp') }}"
-                                                alt="Product Image">
-                                        </a>
-                                        <a href="wishlist.html" class="add-to-wishlist hintT-left"
-                                            data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
-                                    </div>
-                                    <div class="product-info">
-                                        <h6 class="title"><a href="{{ route('product.detail', ['slug'=> 'product-details']) }}">3D Attractive Pot</a></h6>
-                                        <span class="price">
-                                            $90.00
-                                        </span>
-                                        <div class="product-buttons">
-                                            <a href="#quickViewModal" data-bs-toggle="modal"
-                                                class="product-button hintT-top" data-hint="Quick View"><i
-                                                    class="fal fa-search"></i></a>
-                                            <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i
-                                                    class="fal fa-shopping-cart"></i></a>
-                                            <a href="#" class="product-button hintT-top" data-hint="Compare"><i
-                                                    class="fal fa-random"></i></a>
+                            @foreach ($products as $item)
+                                <div class="grid-item col {{ $item->tags->pluck('tag_slug')->implode(' ') }}">
+                                    <div class="product">
+                                        <div class="product-thumb">
+                                            <a href="{{ route('product.detail', ['slug'=> $item->product_slug]) }}" class="image">
+                                                <img src="{{ asset('assets/images/product/s328/product-17.webp') }}" alt="Product Image">
+                                                <img class="image-hover" src="{{ asset('assets/images/product/s328/product-17-hover.webp') }}" alt="Product Image">
+                                            </a>
+                                            <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
+                                        </div>
+                                        <div class="product-info">
+                                            <h6 class="title"><a href="{{ route('product.detail', ['slug'=> $item->product_slug]) }}">{{ $item->product_name }}</a></h6>
+                                            <span class="price">
+                                                {{ $item->product_price }}
+                                            </span>
+                                            <div class="product-buttons">
+                                                <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fal fa-search"></i></a>
+                                                <a href="#" class="product-button hintT-top" data-hint="Add to Cart"><i class="fal fa-shopping-cart"></i></a>
+                                                <a href="#" class="product-button hintT-top" data-hint="Compare"><i class="fal fa-random"></i></a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            @endforeach
 
                             <div class="grid-item col new">
                                 <div class="product">
