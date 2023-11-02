@@ -29,7 +29,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-5">
-                            <form method="POST" action="{{ route('product-tag.update', ['product_tag' => $single_tag->uid ]) }}">
+                            <form method="POST" action="{{ route('admin.product-tag.update', ['product_tag' => $single_tag->uid ]) }}">
                                 @csrf
                                 @method('PATCH')
                                 <input type="hidden" name="id" value="{{ $single_tag->uid }}">
@@ -59,13 +59,13 @@
                                                     <tr>
                                                         <td style="width: 80%">{{ $item->tag_name }}</td>
                                                         <td class="tag-action">
-                                                            <a href="{{ route('product-tag.edit', ['product_tag' => $item->uid]) }}"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
-                                                            <form action="{{ route('product-tag.destroy', ['product_tag' => $item->uid ]) }}" method="post" id="delete-tag">
+                                                            <a href="{{ route('admin.product-tag.edit', ['product_tag' => $item->uid]) }}"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
+                                                            <form action="{{ route('admin.product-tag.destroy', ['product_tag' => $item->uid ]) }}" method="post" id="delete-tag">
                                                                 @method('delete')
                                                                 <input type="hidden" name="uid" value="{{ $item->uid }}">
                                                                 <i class="fa fa-trash-o text-danger" onclick="document.getElementById('delete-tag').submit();" aria-hidden="true"></i>
                                                             </form>
-                                                            <a href="{{ route('product-tag.destroy', ['product_tag' => $item->uid ]) }}"></a>
+                                                            <a href="{{ route('admin.product-tag.destroy', ['product_tag' => $item->uid ]) }}"></a>
                                                         </td>
                                                     </tr>
                                                 @endforeach

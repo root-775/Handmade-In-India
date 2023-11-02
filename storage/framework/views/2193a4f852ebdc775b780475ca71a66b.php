@@ -42,6 +42,7 @@
                                             id="product-dataTable">
                                             <thead>
                                                 <tr>
+                                                    <th>ID</th>
                                                     <th>Name</th>
                                                     <th>Brand</th>
                                                     <th>Price</th>
@@ -63,6 +64,7 @@
                                             <tbody>
                                                 <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                                     <tr>
+                                                        <td><?php echo e($item->id); ?></td>
                                                         <td><?php echo e($item->product_name); ?></td>
                                                         <td><?php echo e($item->product_brand); ?></td>
                                                         <td><?php echo e($item->product_price); ?></td>

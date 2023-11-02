@@ -58,6 +58,7 @@
                                                             <a href="{{ route('admin.product-category.edit', ['product_category' => $item->uid]) }}"><i class="fa fa-pencil text-primary" aria-hidden="true"></i></a>
                                                             <form action="{{ route('admin.product-category.destroy', ['product_category' => $item->uid ]) }}" method="post" id="delete-category">
                                                                 @method('delete')
+                                                                @csrf
                                                                 <input type="hidden" name="uid" value="{{ $item->uid }}">
                                                                 <i class="fa fa-trash-o text-danger" onclick="document.getElementById('delete-category').submit();" aria-hidden="true"></i>
                                                             </form>
